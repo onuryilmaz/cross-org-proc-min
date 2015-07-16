@@ -3,8 +3,12 @@ bindist/
 
 dist/
 
+ivy/
 latestrelease/
 packagelib/
 src-test/
 stdlib/
 .svn/
+tests/bin-test
+tests/libs-external
+.settings/
