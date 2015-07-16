@@ -9,6 +9,6 @@ packagelib/
 src-test/
 stdlib/
 .svn/
-tests/bin-test
-tests/libs-external
+tests/bin-test/
+tests/libs-external/
 .settings/
