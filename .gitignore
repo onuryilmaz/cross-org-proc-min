@@ -1,0 +1,9 @@
+bin/
+bindist/
+
+dist/
+
+latestrelease/
+packagelib/
+src-test/
+stdlib/
