@@ -14,7 +14,7 @@
 	<property name="organization" value="Middle East Technical University" />
 	<property name="description" value="Cross Organizational Process Mining" />
 	<property name="license" value="L-GPL" />
-	<property name="logo" value="http://onuryilmaz.me/cross-org-proc-min/img/footer_logo.png" />
+	<property name="logo" value="http://www.promtools.org/prom6/packages/prom_subtitle_hat_300.png" />
 
 	<property name="ivy.lib.dir" value="ivy" />
 	<!-- <property name="ivy.cache.dir" value="/var/lib/hudson/.ivy2/cache/${env.EXECUTOR_NUMBER}" />-->
