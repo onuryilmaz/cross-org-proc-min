@@ -40,41 +40,37 @@ import com.fluxicon.slickerbox.components.IconVerticalTabbedPane;
 import com.fluxicon.slickerbox.components.StackedCardsTabbedPane;
 import com.fluxicon.slickerbox.factory.SlickerFactory;
 
+/**
+ * Main panel for {@link OrganizationalLogs}
+ * 
+ * @author onuryilmaz
+ *
+ */
 public class OrganizationalLogMainPanel extends JPanel {
 
 	private static final long serialVersionUID = -975010703302834231L;
 
 	double performanceDifferentThresholdValue = 0;
-
 	double refinedActivityThresholdValue = 0.25;
-
-	String fontWhite8 = "<font color='white' face='helvetica,arial,sans-serif' size='8'>";
-
-	String fontWhite6 = "<font color='white' face='helvetica,arial,sans-serif' size='6'>";
-
-	String fontWhite4 = "<font color='white' face='helvetica,arial,sans-serif' size='4'>";
-
-	String fontBlack8 = "<font color='black' face='helvetica,arial,sans-serif' size='8'>";
-
-	String fontBlack6 = "<font color='black' face='helvetica,arial,sans-serif' size='6'>";
-
-	String fontBlack4 = "<font color='black' face='helvetica,arial,sans-serif' size='4'>";
-
-	ImageIcon gearsIcon = new ImageIcon(this.getClass().getResource("/org/processmining/plugins/crossorg/img/gears-64.png"));
-
 	String organizationName = "";
 
-	JComponent component = create(null);
+	SlickerFactory factory;
+
+	String fontWhite8 = "<font color='white' face='helvetica,arial,sans-serif' size='8'>";
+	String fontWhite6 = "<font color='white' face='helvetica,arial,sans-serif' size='6'>";
+	String fontWhite4 = "<font color='white' face='helvetica,arial,sans-serif' size='4'>";
+	String fontBlack8 = "<font color='black' face='helvetica,arial,sans-serif' size='8'>";
+	String fontBlack6 = "<font color='black' face='helvetica,arial,sans-serif' size='6'>";
+	String fontBlack4 = "<font color='black' face='helvetica,arial,sans-serif' size='4'>";
+
+	ImageIcon gearsIcon = new ImageIcon(this.getClass().getResource(
+			"/org/processmining/plugins/crossorg/img/gears-64.png"));
 
 	JLabel performanceThresholdValueLabel;
-
-	StackedCardsTabbedPane tabbed;
-
 	JComboBox<String> organizationCombo;
 
 	ProMSplitPane splitPanel;
-
-	SlickerFactory factory;
+	StackedCardsTabbedPane tabbed;
 
 	/**
 	 * Create the panel.
@@ -94,6 +90,11 @@ public class OrganizationalLogMainPanel extends JPanel {
 		return splitPanel;
 	}
 
+	/**
+	 * Steps to handle when "Analyze" button is clicked
+	 * 
+	 * @param logs
+	 */
 	private void analyzeClicked(OrganizationalLogs logs) {
 		IconVerticalTabbedPane tabbed = new IconVerticalTabbedPane(Color.GRAY, Color.BLACK, 85);
 
@@ -112,8 +113,9 @@ public class OrganizationalLogMainPanel extends JPanel {
 
 						JTextPane headerPanel = new JTextPane();
 						headerPanel.setContentType("text/html");
-						headerPanel.setText("<center><font color='white' face='helvetica,arial,sans-serif' size='8'>Mismatch Patterns</font><font color='white' face='helvetica,arial,sans-serif' size='4'> <br>" + organizationName + " (Selected) vs "
-								+ s + " (Other)");
+						headerPanel
+								.setText("<center><font color='white' face='helvetica,arial,sans-serif' size='8'>Mismatch Patterns</font><font color='white' face='helvetica,arial,sans-serif' size='4'> <br>"
+										+ organizationName + " (Selected) vs " + s + " (Other)");
 						headerPanel.setEditable(false);
 						headerPanel.setBackground(null);
 						c.gridx = 0;
@@ -130,22 +132,26 @@ public class OrganizationalLogMainPanel extends JPanel {
 						if (splitPanelRefinedActivity != null)
 							panel.add(splitPanelRefinedActivity, c);
 
-						ProMSplitPane splitPanelDifferentMoments = differentMomentsPanelCreator(logs, firstOrg, secondOrg);
+						ProMSplitPane splitPanelDifferentMoments = differentMomentsPanelCreator(logs, firstOrg,
+								secondOrg);
 						c.gridy = 3;
 						if (splitPanelDifferentMoments != null)
 							panel.add(splitPanelDifferentMoments, c);
 
-						ProMSplitPane splitPanelDifferentMoments2 = differentConditionsPanelCreator(logs, firstOrg, secondOrg);
+						ProMSplitPane splitPanelDifferentMoments2 = differentConditionsPanelCreator(logs, firstOrg,
+								secondOrg);
 						c.gridy = 4;
 						if (splitPanelDifferentMoments2 != null)
 							panel.add(splitPanelDifferentMoments2, c);
 
-						ProMSplitPane splitPanelDifferentMoments3 = differentDependencyPanelCreator(logs, firstOrg, secondOrg);
+						ProMSplitPane splitPanelDifferentMoments3 = differentDependencyPanelCreator(logs, firstOrg,
+								secondOrg);
 						c.gridy = 5;
 						if (splitPanelDifferentMoments3 != null)
 							panel.add(splitPanelDifferentMoments3, c);
 
-						ProMSplitPane splitPanelDifferentMoments4 = additionalDependencyPanelCreator(logs, firstOrg, secondOrg);
+						ProMSplitPane splitPanelDifferentMoments4 = additionalDependencyPanelCreator(logs, firstOrg,
+								secondOrg);
 						c.gridy = 6;
 						if (splitPanelDifferentMoments4 != null)
 							panel.add(splitPanelDifferentMoments4, c);
@@ -156,7 +162,9 @@ public class OrganizationalLogMainPanel extends JPanel {
 
 						JTextPane headerPanel = new JTextPane();
 						headerPanel.setContentType("text/html");
-						headerPanel.setText("<center><font color='white' face='helvetica,arial,sans-serif' size='8'>Mismatch Patterns</font><font color='white' face='helvetica,arial,sans-serif' size='4'> <br>" + organizationName);
+						headerPanel
+								.setText("<center><font color='white' face='helvetica,arial,sans-serif' size='8'>Mismatch Patterns</font><font color='white' face='helvetica,arial,sans-serif' size='4'> <br>"
+										+ organizationName);
 						headerPanel.setEditable(false);
 						headerPanel.setBackground(null);
 						c.gridx = 0;
@@ -188,14 +196,24 @@ public class OrganizationalLogMainPanel extends JPanel {
 
 	}
 
+	/**
+	 * Create header panel
+	 * 
+	 * @param logs
+	 * @param factory
+	 * @return
+	 */
 	private ProMSplitPane createHeaderPanel(final OrganizationalLogs logs, SlickerFactory factory) {
 		ProMSplitPane headerPanel = new ProMSplitPane(ProMSplitPane.HORIZONTAL_SPLIT);
 
 		{
 			JTextPane headerExplanation = new JTextPane();
 			headerExplanation.setContentType("text/html");
-			headerExplanation.setText(fontBlack6 + "Mismatch Pattern Analysis without Performance Clustering</font><hr>" + fontBlack4
-					+ " Select an organization from left and click \"Analyze\" to list mismatch patterns compared to other organizations.");
+			headerExplanation
+					.setText(fontBlack6
+							+ "Mismatch Pattern Analysis without Performance Clustering</font><hr>"
+							+ fontBlack4
+							+ " Select an organization from left and click \"Analyze\" to list mismatch patterns compared to other organizations.");
 			headerExplanation.setEditable(false);
 			headerExplanation.setBackground(null);
 			headerPanel.setRightComponent(headerExplanation);
@@ -235,37 +253,7 @@ public class OrganizationalLogMainPanel extends JPanel {
 				organizationComboLabelConstraint.fill = GridBagConstraints.HORIZONTAL;
 				headerLeftPanel.add(organizationComboLabel, organizationComboLabelConstraint);
 			}
-			// {
-			// final JSlider jSlider =
-			// factory.createSlider(SwingConstants.HORIZONTAL);
-			// GridBagConstraints jSliderConstraint = new GridBagConstraints();
-			// jSlider.setMaximum(100);
-			// jSlider.setMinimum(0);
-			// jSliderConstraint.gridx = 2;
-			// jSliderConstraint.gridy = 1;
-			// jSlider.addChangeListener(new ChangeListener() {
-			// public void stateChanged(ChangeEvent arg0) {
-			// performanceDifferentThresholdValue = (float)
-			// (jSlider.getValue());
-			// performanceDifferentThresholdValue =
-			// performanceDifferentThresholdValue / 10;
-			// performanceThresholdValueLabel.setText(String.format("Threshold (%.2f)",
-			// performanceDifferentThresholdValue));
-			// }
-			// });
-			// headerLeftPanel.add(jSlider, jSliderConstraint);
-			// }
-			// {
-			// performanceThresholdValueLabel =
-			// factory.createLabel(String.format("Threshold (%.2f)",
-			// performanceDifferentThresholdValue));
-			// GridBagConstraints thresholdValueConstraint = new
-			// GridBagConstraints();
-			// thresholdValueConstraint.gridx = 2;
-			// thresholdValueConstraint.gridy = 0;
-			// headerLeftPanel.add(performanceThresholdValueLabel,
-			// thresholdValueConstraint);
-			// }
+
 			{
 				JButton analyzeButton = factory.createButton("Analyze");
 				GridBagConstraints analyzeButtonConstraint = new GridBagConstraints();
@@ -290,6 +278,13 @@ public class OrganizationalLogMainPanel extends JPanel {
 		return headerPanel;
 	}
 
+	/**
+	 * 
+	 * @param logs
+	 * @param firstOrg
+	 * @param secondOrg
+	 * @return
+	 */
 	private ProMSplitPane skippedActivityPanelCreator(OrganizationalLogs logs, int firstOrg, int secondOrg) {
 		ProMSplitPane splitPanelSkippedActivity = new ProMSplitPane();
 		splitPanelSkippedActivity.setBackground(null);
@@ -306,12 +301,24 @@ public class OrganizationalLogMainPanel extends JPanel {
 		JTextPane textField = new JTextPane();
 		textField.setContentType("text/html");
 		if (firstOrg == secondOrg) {
-			textField.setText(fontBlack6 + "Skipped Activities (" + comp.getTable().getRowCount() + ") </font><hr>" + fontBlack4
-					+ " An activity exists in one process but no equivalent activity is found in the other process. In the list you can see the skipped activities in " + logs.organizationNames.get(firstOrg) + ".");
+			textField
+					.setText(fontBlack6
+							+ "Skipped Activities ("
+							+ comp.getTable().getRowCount()
+							+ ") </font><hr>"
+							+ fontBlack4
+							+ " An activity exists in one process but no equivalent activity is found in the other process. In the list you can see the skipped activities in "
+							+ logs.organizationNames.get(firstOrg) + ".");
 		} else {
-			textField.setText(fontBlack6 + "Skipped Activities (" + comp.getTable().getRowCount() + ")</font><hr>" + fontBlack4
-					+ " An activity exists in one process but no equivalent activity is found in the other process. In the list you can see the skipped activities in " + logs.organizationNames.get(secondOrg) + " compared to "
-					+ logs.organizationNames.get(firstOrg) + ".");
+			textField
+					.setText(fontBlack6
+							+ "Skipped Activities ("
+							+ comp.getTable().getRowCount()
+							+ ")</font><hr>"
+							+ fontBlack4
+							+ " An activity exists in one process but no equivalent activity is found in the other process. In the list you can see the skipped activities in "
+							+ logs.organizationNames.get(secondOrg) + " compared to "
+							+ logs.organizationNames.get(firstOrg) + ".");
 		}
 		textField.setEditable(false);
 		textField.setBackground(new Color(192, 192, 192));
@@ -323,6 +330,12 @@ public class OrganizationalLogMainPanel extends JPanel {
 		return splitPanelSkippedActivity;
 	}
 
+	/**
+	 * 
+	 * @param logs
+	 * @param i
+	 * @return
+	 */
 	private ProMTable skippedActivityTableCreator(OrganizationalLogs logs, int i) {
 		List<String> skippedActivities = logs.mismatchPatterns.skippedActivityComplete.get(i);
 
@@ -342,6 +355,13 @@ public class OrganizationalLogMainPanel extends JPanel {
 		return table;
 	}
 
+	/**
+	 * 
+	 * @param logs
+	 * @param firstOrg
+	 * @param secondOrg
+	 * @return
+	 */
 	private ProMSplitPane refinedActivityPanelCreator(OrganizationalLogs logs, int firstOrg, int secondOrg) {
 		ProMSplitPane splitPanelRefinedActivity = new ProMSplitPane();
 		splitPanelRefinedActivity.setBackground(null);
@@ -352,9 +372,15 @@ public class OrganizationalLogMainPanel extends JPanel {
 
 		JTextPane textField = new JTextPane();
 		textField.setContentType("text/html");
-		textField.setText(fontBlack6 + "Refined Activities (" + comp.getTable().getRowCount() + ")</font><hr>" + fontBlack4
-				+ "An activity exists in one process but, as an equivalent, a collection of activitiesare existing in the other process to achieve the same task. In the list you can see the refined activity in "
-				+ logs.organizationNames.get(firstOrg) + " and a potential list of activities in " + logs.organizationNames.get(secondOrg) + ".");
+		textField
+				.setText(fontBlack6
+						+ "Refined Activities ("
+						+ comp.getTable().getRowCount()
+						+ ")</font><hr>"
+						+ fontBlack4
+						+ "An activity exists in one process but, as an equivalent, a collection of activitiesare existing in the other process to achieve the same task. In the list you can see the refined activity in "
+						+ logs.organizationNames.get(firstOrg) + " and a potential list of activities in "
+						+ logs.organizationNames.get(secondOrg) + ".");
 		textField.setEditable(false);
 		textField.setBackground(new Color(192, 192, 192));
 		JScrollPane scrollPane = new JScrollPane(textField);
@@ -365,8 +391,16 @@ public class OrganizationalLogMainPanel extends JPanel {
 		return splitPanelRefinedActivity;
 	}
 
+	/**
+	 * 
+	 * @param logs
+	 * @param firstOrg
+	 * @param secondOrg
+	 * @return
+	 */
 	private ProMTable refinedActivityTableCreator(OrganizationalLogs logs, int firstOrg, int secondOrg) {
-		List<RefinedActivityUnit> refinedActivities = logs.mismatchPatterns.getRefinedActivityUnitsComplete(firstOrg, secondOrg);
+		List<RefinedActivityUnit> refinedActivities = logs.mismatchPatterns.getRefinedActivityUnitsComplete(firstOrg,
+				secondOrg);
 
 		Map<String, String> dataMap = new HashMap<String, String>();
 
@@ -403,11 +437,19 @@ public class OrganizationalLogMainPanel extends JPanel {
 			count++;
 		}
 
-		DefaultTableModel tbModel = new NonEditableModel(data, new String[] { "Refined Activity", "Potential Activities" });
+		DefaultTableModel tbModel = new NonEditableModel(data, new String[] { "Refined Activity",
+				"Potential Activities" });
 		ProMTable table = new ProMTable(tbModel);
 		return table;
 	}
 
+	/**
+	 * 
+	 * @param logs
+	 * @param firstOrg
+	 * @param secondOrg
+	 * @return
+	 */
 	private ProMSplitPane differentMomentsPanelCreator(OrganizationalLogs logs, int firstOrg, int secondOrg) {
 		ProMSplitPane splitPanelRefinedActivity = new ProMSplitPane();
 		splitPanelRefinedActivity.setBackground(null);
@@ -418,9 +460,15 @@ public class OrganizationalLogMainPanel extends JPanel {
 
 		JTextPane textField = new JTextPane();
 		textField.setContentType("text/html");
-		textField.setText(fontBlack6 + "Different Moments in Processes (" + comp.getTable().getRowCount() + ")</font><hr>" + fontBlack4
-				+ "Set of activities are undertaken with different orders in different processes. In the list you can see different previous or next acitivities in two organizations as " + logs.organizationNames.get(firstOrg) + "(Selected) and "
-				+ logs.organizationNames.get(secondOrg) + "(Other).");
+		textField
+				.setText(fontBlack6
+						+ "Different Moments in Processes ("
+						+ comp.getTable().getRowCount()
+						+ ")</font><hr>"
+						+ fontBlack4
+						+ "Set of activities are undertaken with different orders in different processes. In the list you can see different previous or next acitivities in two organizations as "
+						+ logs.organizationNames.get(firstOrg) + "(Selected) and "
+						+ logs.organizationNames.get(secondOrg) + "(Other).");
 		textField.setEditable(false);
 		textField.setBackground(new Color(192, 192, 192));
 		JScrollPane scrollPane = new JScrollPane(textField);
@@ -431,6 +479,13 @@ public class OrganizationalLogMainPanel extends JPanel {
 		return splitPanelRefinedActivity;
 	}
 
+	/**
+	 * 
+	 * @param logs
+	 * @param firstOrg
+	 * @param secondOrg
+	 * @return
+	 */
 	private ProMTable differentMomentsTableCreator(OrganizationalLogs logs, int firstOrg, int secondOrg) {
 
 		List<DifferentMomentsUnit> dmus = logs.mismatchPatterns.getDifferentMoments(firstOrg, secondOrg);
@@ -450,11 +505,19 @@ public class OrganizationalLogMainPanel extends JPanel {
 			i++;
 		}
 
-		DefaultTableModel tbModel = new NonEditableModel(data, new String[] { "Previous (Selected)", "Previous (Other)", "Activity", "Next (Selected)", "Next (Other)" });
+		DefaultTableModel tbModel = new NonEditableModel(data, new String[] { "Previous (Selected)",
+				"Previous (Other)", "Activity", "Next (Selected)", "Next (Other)" });
 		ProMTable table = new ProMTable(tbModel);
 		return table;
 	}
 
+	/**
+	 * 
+	 * @param logs
+	 * @param firstOrg
+	 * @param secondOrg
+	 * @return
+	 */
 	private ProMSplitPane differentConditionsPanelCreator(OrganizationalLogs logs, int firstOrg, int secondOrg) {
 		ProMSplitPane splitPanelRefinedActivity = new ProMSplitPane();
 		splitPanelRefinedActivity.setBackground(null);
@@ -465,9 +528,15 @@ public class OrganizationalLogMainPanel extends JPanel {
 
 		JTextPane textField = new JTextPane();
 		textField.setContentType("text/html");
-		textField.setText(fontBlack6 + "Different Conditions for Occurrence (" + comp.getTable().getRowCount() + ")</font><hr>" + fontBlack4
-				+ "Set of dependencies are same for two processes; however, occurrence condition is different in organizations. In the list you can see different occurrence conditions in two organizations as " + logs.organizationNames.get(firstOrg)
-				+ "(Selected) and " + logs.organizationNames.get(secondOrg) + "(Other).");
+		textField
+				.setText(fontBlack6
+						+ "Different Conditions for Occurrence ("
+						+ comp.getTable().getRowCount()
+						+ ")</font><hr>"
+						+ fontBlack4
+						+ "Set of dependencies are same for two processes; however, occurrence condition is different in organizations. In the list you can see different occurrence conditions in two organizations as "
+						+ logs.organizationNames.get(firstOrg) + "(Selected) and "
+						+ logs.organizationNames.get(secondOrg) + "(Other).");
 		textField.setEditable(false);
 		textField.setBackground(new Color(192, 192, 192));
 		JScrollPane scrollPane = new JScrollPane(textField);
@@ -478,6 +547,13 @@ public class OrganizationalLogMainPanel extends JPanel {
 		return splitPanelRefinedActivity;
 	}
 
+	/**
+	 * 
+	 * @param logs
+	 * @param firstOrg
+	 * @param secondOrg
+	 * @return
+	 */
 	private ProMTable differentConditionsTableCreator(OrganizationalLogs logs, int firstOrg, int secondOrg) {
 
 		List<DifferentConditionUnit> dcus = logs.mismatchPatterns.getDifferentConditions(firstOrg, secondOrg);
@@ -494,11 +570,19 @@ public class OrganizationalLogMainPanel extends JPanel {
 			i++;
 		}
 
-		DefaultTableModel tbModel = new NonEditableModel(data, new String[] { "Activity", "Gateway (Selected)", "Gateway (Other)" });
+		DefaultTableModel tbModel = new NonEditableModel(data, new String[] { "Activity", "Gateway (Selected)",
+				"Gateway (Other)" });
 		ProMTable table = new ProMTable(tbModel);
 		return table;
 	}
 
+	/**
+	 * 
+	 * @param logs
+	 * @param firstOrg
+	 * @param secondOrg
+	 * @return
+	 */
 	private ProMSplitPane differentDependencyPanelCreator(OrganizationalLogs logs, int firstOrg, int secondOrg) {
 		ProMSplitPane splitPanelRefinedActivity = new ProMSplitPane();
 		splitPanelRefinedActivity.setBackground(null);
@@ -509,9 +593,15 @@ public class OrganizationalLogMainPanel extends JPanel {
 
 		JTextPane textField = new JTextPane();
 		textField.setContentType("text/html");
-		textField.setText(fontBlack6 + "Different Dependencies (" + comp.getTable().getRowCount() + ")</font><hr>" + fontBlack4
-				+ "Dependency set of activities differ in different organizations. In the list you can see different dependency sets in two organizations as " + logs.organizationNames.get(firstOrg) + "(Selected) and "
-				+ logs.organizationNames.get(secondOrg) + "(Other).");
+		textField
+				.setText(fontBlack6
+						+ "Different Dependencies ("
+						+ comp.getTable().getRowCount()
+						+ ")</font><hr>"
+						+ fontBlack4
+						+ "Dependency set of activities differ in different organizations. In the list you can see different dependency sets in two organizations as "
+						+ logs.organizationNames.get(firstOrg) + "(Selected) and "
+						+ logs.organizationNames.get(secondOrg) + "(Other).");
 		textField.setEditable(false);
 		textField.setBackground(new Color(192, 192, 192));
 		JScrollPane scrollPane = new JScrollPane(textField);
@@ -522,6 +612,13 @@ public class OrganizationalLogMainPanel extends JPanel {
 		return splitPanelRefinedActivity;
 	}
 
+	/**
+	 * 
+	 * @param logs
+	 * @param firstOrg
+	 * @param secondOrg
+	 * @return
+	 */
 	private ProMTable differentDependencyTableCreator(OrganizationalLogs logs, int firstOrg, int secondOrg) {
 
 		List<DifferentDependencyUnit> ddus = logs.mismatchPatterns.getDifferentDependencies(firstOrg, secondOrg);
@@ -538,11 +635,19 @@ public class OrganizationalLogMainPanel extends JPanel {
 			i++;
 		}
 
-		DefaultTableModel tbModel = new NonEditableModel(data, new String[] { "Activity", "Dependency Set (Selected)", "Dependency Set (Other)" });
+		DefaultTableModel tbModel = new NonEditableModel(data, new String[] { "Activity", "Dependency Set (Selected)",
+				"Dependency Set (Other)" });
 		ProMTable table = new ProMTable(tbModel);
 		return table;
 	}
 
+	/**
+	 * 
+	 * @param logs
+	 * @param firstOrg
+	 * @param secondOrg
+	 * @return
+	 */
 	private ProMSplitPane additionalDependencyPanelCreator(OrganizationalLogs logs, int firstOrg, int secondOrg) {
 		ProMSplitPane splitPanelRefinedActivity = new ProMSplitPane();
 		splitPanelRefinedActivity.setBackground(null);
@@ -553,9 +658,15 @@ public class OrganizationalLogMainPanel extends JPanel {
 
 		JTextPane textField = new JTextPane();
 		textField.setContentType("text/html");
-		textField.setText(fontBlack6 + "Additional Dependencies (" + comp.getTable().getRowCount() + ")</font><hr>" + fontBlack4
-				+ " This pattern is a special case of different dependencies where one set of activities includes the other and results with additional dependencies. In the list you can see additional dependency sets in two organizations as "
-				+ logs.organizationNames.get(firstOrg) + "(Selected) and " + logs.organizationNames.get(secondOrg) + "(Other).");
+		textField
+				.setText(fontBlack6
+						+ "Additional Dependencies ("
+						+ comp.getTable().getRowCount()
+						+ ")</font><hr>"
+						+ fontBlack4
+						+ " This pattern is a special case of different dependencies where one set of activities includes the other and results with additional dependencies. In the list you can see additional dependency sets in two organizations as "
+						+ logs.organizationNames.get(firstOrg) + "(Selected) and "
+						+ logs.organizationNames.get(secondOrg) + "(Other).");
 		textField.setEditable(false);
 		textField.setBackground(new Color(192, 192, 192));
 		JScrollPane scrollPane = new JScrollPane(textField);
@@ -566,6 +677,13 @@ public class OrganizationalLogMainPanel extends JPanel {
 		return splitPanelRefinedActivity;
 	}
 
+	/**
+	 * 
+	 * @param logs
+	 * @param firstOrg
+	 * @param secondOrg
+	 * @return
+	 */
 	private ProMTable additionalDependencyTableCreator(OrganizationalLogs logs, int firstOrg, int secondOrg) {
 
 		List<DifferentDependencyUnit> ddus = logs.mismatchPatterns.getDifferentDependencies(firstOrg, secondOrg);
@@ -584,7 +702,8 @@ public class OrganizationalLogMainPanel extends JPanel {
 		if (data.length == 0)
 			return null;
 
-		DefaultTableModel tbModel = new NonEditableModel(data, new String[] { "Activity", "Dependency Set (Selected)", "Dependency Set (Other)" });
+		DefaultTableModel tbModel = new NonEditableModel(data, new String[] { "Activity", "Dependency Set (Selected)",
+				"Dependency Set (Other)" });
 		ProMTable table = new ProMTable(tbModel);
 		return table;
 	}

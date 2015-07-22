@@ -5,7 +5,7 @@ import javax.swing.table.DefaultTableModel;
 /**
  * Extension of table model for non-editable information
  * 
- * @author I313226
+ * @author onuryilmaz
  *
  */
 public class NonEditableModel extends DefaultTableModel {

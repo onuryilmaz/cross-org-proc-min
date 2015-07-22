@@ -11,7 +11,15 @@ import javax.swing.JPanel;
 import org.processmining.framework.util.ui.widgets.ProMHeaderPanel;
 import org.processmining.framework.util.ui.widgets.ProMTextField;
 
+/**
+ * Dialog for providing names for organizations
+ * 
+ * @author onuryilmaz
+ *
+ */
 public class OrganizationalLogOrgNameDialog extends JPanel {
+
+	private static final long serialVersionUID = -3738066943356261635L;
 
 	private List<String> organizationNames = new ArrayList<String>(100);
 	Map<Integer, ProMTextField> fields = new HashMap<Integer, ProMTextField>();
@@ -30,13 +38,16 @@ public class OrganizationalLogOrgNameDialog extends JPanel {
 
 		for (int i = 1; i <= size; i++) {
 			ProMTextField field = new ProMTextField("Organization Name for Log " + i);
-			// System.out.println(field.getText());
 			fields.put(i, field);
 			panel.add(field);
 		}
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public List<String> getOrganizationNames() {
 		organizationNames.add("Select");
 		for (int i = 1; i <= size; i++) {
@@ -45,6 +56,10 @@ public class OrganizationalLogOrgNameDialog extends JPanel {
 		return organizationNames;
 	}
 
+	/**
+	 * 
+	 * @param organizationNames
+	 */
 	public void setOrganizationNames(List<String> organizationNames) {
 		this.organizationNames = organizationNames;
 	}

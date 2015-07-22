@@ -8,6 +8,12 @@ import org.processmining.framework.plugin.annotations.Plugin;
 import org.processmining.framework.plugin.annotations.PluginVariant;
 import org.processmining.plugins.crossorgprocmin.utilities.OrganizationalLogs;
 
+/**
+ * Visualizer for {@link OrganizationalLogs}
+ * 
+ * @author onuryilmaz
+ *
+ */
 @Plugin(name = "Mismatch Patterns w/o Clustering", returnLabels = { "Cross-Organizational Analysis Report" }, returnTypes = { JComponent.class }, parameterLabels = { "Cross-Organizational Analysis Data" }, userAccessible = false)
 @Visualizer
 public class OrganizationalLogsVisualizer {
