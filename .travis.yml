@@ -2,6 +2,6 @@ language: java
 before_install: ant init-ivy
 install: 
 - ant resolve
-- ant compile
+- ant "Compile Sources"
 jdk:
   - openjdk7
