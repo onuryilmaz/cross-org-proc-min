@@ -63,8 +63,7 @@ public class OrganizationalLogMainPanel extends JPanel {
 	String fontBlack6 = "<font color='black' face='helvetica,arial,sans-serif' size='6'>";
 	String fontBlack4 = "<font color='black' face='helvetica,arial,sans-serif' size='4'>";
 
-	ImageIcon gearsIcon = new ImageIcon(this.getClass().getResource(
-			"/org/processmining/plugins/crossorg/img/gears-64.png"));
+	ImageIcon gearsIcon = new ImageIcon(OrganizationalLogMainPanel.class.getClassLoader().getResource("gears-64.png"));
 
 	JLabel performanceThresholdValueLabel;
 	JComboBox<String> organizationCombo;

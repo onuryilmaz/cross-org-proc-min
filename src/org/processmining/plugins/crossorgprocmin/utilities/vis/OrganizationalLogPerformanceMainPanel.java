@@ -79,12 +79,9 @@ public class OrganizationalLogPerformanceMainPanel extends JPanel {
 	double performanceDifferentThresholdValue = 0;
 	double refinedActivityThresholdValue = 0.05;
 
-	ImageIcon gearsIcon32 = new ImageIcon(this.getClass().getResource(
-			"/org/processmining/plugins/crossorg/img/gears-32.png"));
-	ImageIcon gearsIcon64 = new ImageIcon(this.getClass().getResource(
-			"/org/processmining/plugins/crossorg/img/gears-64.png"));
-	ImageIcon dashboardIcon30 = new ImageIcon(this.getClass().getResource(
-			"/org/processmining/plugins/crossorg/img/dashboard-30.png"));
+	ImageIcon gearsIcon32 = new ImageIcon(OrganizationalLogPerformanceMainPanel.class.getClassLoader().getResource("gears-32.png"));
+	ImageIcon gearsIcon64 = new ImageIcon(OrganizationalLogPerformanceMainPanel.class.getClassLoader().getResource("gears-64.png"));
+	ImageIcon dashboardIcon30 = new ImageIcon(OrganizationalLogPerformanceMainPanel.class.getClassLoader().getResource("dashboard-30.png"));
 
 	JComponent component = create(null);
 	JLabel performanceThresholdValueLabel;
@@ -358,6 +355,7 @@ public class OrganizationalLogPerformanceMainPanel extends JPanel {
 	 * @param factory
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	private ProMSplitPane createHeaderPanel(final OrganizationalLogs logs, SlickerFactory factory) {
 		ProMSplitPane headerPanel = new ProMSplitPane(ProMSplitPane.HORIZONTAL_SPLIT);
 

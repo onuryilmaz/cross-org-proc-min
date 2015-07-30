@@ -95,6 +95,7 @@
 
 	<!-- create the project's javadoc from all existing sources. Note that only org.processmining.** is included -->
 	<target name="Create Javadoc" description="Generated javadoc">
+		<mkdir dir="${doc}" />
 		<javadoc packagenames="**" classpathref="classpath" useexternalfile="true" defaultexcludes="yes" destdir="${doc}" author="true" version="true" verbose="false" use="true" windowtitle="${project}">
 			<fileset dir=".">
 				<include name="src/**" />
@@ -157,6 +158,10 @@
 		<mkdir dir="${dist}" />
 		<echo message="Compiling the sources" />
 		<compile />
+		
+		<echo message="Copying the resources" />		
+		<copy todir="${build}"><fileset dir="resources"/></copy>
+		
 		<echo message="Making jar" />
 		<makejar />
 	</target>

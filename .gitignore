@@ -3,6 +3,8 @@ bindist/
 
 dist/
 
+/doc/
+
 ivy/
 latestrelease/
 packagelib/
