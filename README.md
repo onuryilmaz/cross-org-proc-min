@@ -2,4 +2,4 @@
 * [Website](http://onuryilmaz.github.io/cross-org-proc-min)
 * [Build Status](http://ais-hudson.win.tue.nl:8080/job/CrossOrgProcMin/)
 * [Javadoc](http://ais-hudson.win.tue.nl:8080/job/CrossOrgProcMin/javadoc/)
-* User Manual
+* [User Manual](https://www.youtube.com/watch?v=T92UrRfl3r0)
